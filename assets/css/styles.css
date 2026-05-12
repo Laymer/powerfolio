@@ -335,6 +335,98 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .hero-inner {
   width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-text { min-width: 0; }
+
+.hero-portrait {
+  position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
+  animation: fadeUp 0.9s 0.2s var(--ease) both;
+}
+
+.portrait-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 4px;
+  background: var(--gradient-1);
+  box-shadow:
+    0 30px 60px -20px var(--accent-glow),
+    0 0 0 1px var(--border);
+  overflow: hidden;
+  z-index: 2;
+  transition: transform 0.5s var(--ease);
+}
+
+.portrait-frame::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+  opacity: 0.85;
+  z-index: 0;
+  animation: rotate 14s linear infinite;
+}
+
+.portrait-frame img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--bg-elev);
+  display: block;
+}
+
+.portrait-frame:hover { transform: translateY(-6px) scale(1.02); }
+
+.portrait-initials {
+  position: absolute;
+  inset: 4px;
+  z-index: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-elev);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: clamp(72px, 12vw, 130px);
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.portrait-fallback .portrait-initials { display: flex; }
+
+.portrait-glow {
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 65%);
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(40px);
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%      { opacity: 0.8; transform: scale(1.08); }
 }
 
 .hero-tag {
@@ -889,6 +981,27 @@ a.meta-item:hover { color: var(--text); }
   letter-spacing: 0.05em;
 }
 
+.card-talk { padding-bottom: 16px; }
+
+.video-embed {
+  position: relative;
+  margin-top: 16px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* -----------------------------------------------------------
    13. Contact
    ----------------------------------------------------------- */
@@ -994,6 +1107,17 @@ a.meta-item:hover { color: var(--text); }
   .contact-card {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: left;
+  }
+
+  .hero-portrait {
+    order: -1;
+    max-width: 260px;
   }
 
   .contact-card { padding: 32px 24px; }
