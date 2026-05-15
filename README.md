@@ -8,7 +8,7 @@ Built as a static site (HTML + CSS + vanilla JS) for zero-dependency deployment 
 Once GitHub Pages is enabled for this repo, the site will be available at:
 
 ```
-https://laymer.github.io/powerfolio/
+https://www.ikopest.me/
 ```
 
 ## Local preview
