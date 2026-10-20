@@ -22,3 +22,26 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Private applications and imported drafts must never enter the public site.
+targeted-resumes/
+job-applications/
+applications/
+application-packs/
+private/
+imports/
+browser-state/
+playwright/.auth/
+*Job_Search*.xlsx
+*application-manifest*.json
+*.docx
+*.pdf
+!assets/cv/
+!assets/cv/Igor-Kopestenski-CV-EN.pdf
+!assets/cv/Igor-Kopestenski-CV-FR.pdf
+
+# Windows download metadata
+*:Zone.Identifier
+*:Zone.Identifier:*
+[Dd]esktop.ini
+Thumbs.db
