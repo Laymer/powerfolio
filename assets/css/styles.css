@@ -1240,3 +1240,5 @@ a:focus-visible, button:focus-visible {
   .reveal, .hero * { opacity: 1 !important; transform: none !important; animation: none !important; }
   .contact-card::before, .project-card::before { display: none; }
 }
+
+.project-card + .project-card { margin-top: 24px; }
